@@ -119,4 +119,5 @@ else:
     print("Test case failed")
 
 driver.close()
+driver.quit()
 
