@@ -1,0 +1,122 @@
+Python installation path: C:\Users\kksve\AppData\Local\Programs\Python\Python311
+================================================================================
+
+Practice websites
+-----------------
+0.http://orangehrm.qedgetech.com/symfony/web/index.php/auth/login  # orangeHRM
+1.https://demo.nopcommerce.com/
+2.https://practice.automationtesting.in/
+3.https://money.rediff.com/gainers/bse/daily/groupa
+4.https://admin-demo.nopCommerce.com/login
+5.https://www.facebook.com/
+6.https://itera-qa.azurewebsites.net/home/automation   # for check box
+7.http://www.deadlinkcity.com/    # for broken links
+8.https://the-internet.herokuapp.com/javascript_alerts  # for alerts / popups
+9.https://the-internet.herokuapp.com/basic_auth  # for authentication popups
+10.https://www.selenium.dev/selenium/docs/api/java/index.html?overview-summary.html  # Frames/Iframes
+11.https://demo.automationtesting.in/Frames.html  # Inner frames / Nested frames  
+12.https://testautomationpractice.blogspot.com/  # practice
+13.https://jqueryui.com/datepicker/  # Date picker 1
+14.https://www.dummyticket.com/dummy-ticket-for-visa-application/   # Date picker 2
+15.http://swisnl.github.io/jQuery-contextMenu/demo.html  # Mouse operations
+16.https://opensource-demo.orangehrmlive.com/web/index.php/auth/login  # orangehrm
+17.https://text-compare.com/		# Keyboard operations
+18.https://file-examples.com/index.php/sample-documents-download/sample-doc-download/	# Download & Upload files
+19.https://demo.automationtesting.in/FileDownload.html		# Download & Upload files
+20.https://www.monsterindia.com/		# Upload file
+
+Mouse operations
+16.https://demo.nopcommerce.com/  --> Mouse hover
+17.http://swisnl.github.io/jQuery-contextMenu/demo.html  --> Right click
+18.https://www.w3schools.com/tags/tryit.asp?filename=tryhtml5_ev_ondblclick3  --> Double click
+19.http://www.dhtmlgoodies.com/scripts/drag-drop-custom/demo-drag-drop-3.html  --> Drag and drop
+20.https://www.jqueryscript.net/demo/Price-Range-Slider-jQuery-UI/  --> Drag and drop offset
+
+21.https://www.countries-ofthe-world.com/flags-of-the-world.html  --> Scroll down operations
+22.https://www.sitepoint.com/mime-types-complete-list/  --> List of Mime types
+23.https://file-examples.com/  --> File-examples - Download sample files
+
+
+24.https://www.moneycontrol.com/fixed-income/calculator/state-bank-of-india-sbi/fixed-deposit-calculator-SBI-BSB001.html --> Data driven test case
+25.https://www.opencart.com/index.php?route=account/register  --> Dropdowns
+
+26.https://www.saucedemo.com/
+27.https://www.notion.so/Top-21-Good-Websites-for-Practice-Automation-Testing-885747057cc64a678e983e80fc4d941c
+
+demo sites
+-------------
+https://demoqa.com/
+https://selectorshub.com/xpath-practice-page/
+https://webdriveruniversity.com/
+https://magento.softwaretestingboard.com/
+https://www.saucedemo.com/
+https://www.globalsqa.com/angularJs-protractor/BankingProject/#/login
+https://computer-database.gatling.io/computers
+https://the-internet.herokuapp.com/
+https://testpages.eviltester.com/styled/index.html
+https://letcode.in/test
+http://uitestingplayground.com/
+
+
+
+1.How to launch chrome browser and open url
+-------------------------------------------
+
+from selenium import webdriver
+driver = webdriver.Chrome(executable_path="D:\\Code\SE_AM\Drivers\chromedriver_win32\\chromedriver.exe")
+driver.maximize_window()
+driver.get("https://www.orangehrm.com/")
+
+___________________________________________
+
+Sample Test case 1
+
+# 1) Open Web Browser (Chrome/firefox/IE).
+# 2) Open URL https://admin-demo.nopcommerce.com/login
+# 3) Provide Email (admin@yourstore.com).
+# 4) Provide password (admin).
+# 5) Click on Login.
+# 6) Capture title of the dashboad page. (Actual title)
+# 7) Verify title of the page: "Dashboard / nopCommerce administration" (Expected)
+# 8) close browser
+
+from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.common.by import By
+from selenium import webdriver
+driver = webdriver.Chrome()
+driver.get("https://admin-demo.nopcommerce.com/login")
+
+driver.find_element(By.ID,"Email").send_keys("admin@yourstore.com")
+driver.find_element(By.ID,"Password").send_keys("admin")
+driver.find_element(By.CLASS_NAME,"button-1").click()
+
+act_title = driver.title
+exp_title = "Dashboard / nopCommerce administration"
+if act_title == exp_title:
+    print('Test case passed')
+else:
+    print("Test case failed")
+driver.close()
+
+---------------------------------------------------------------------------------
+
+# from selenium.webdriver.chrome.service import service
+from selenium.webdriver.common.by import By
+from selenium import webdriver
+driver = webdriver.Chrome()
+
+driver.get("https://opensource-demo.orangehrmlive.com/web/index.php/auth/login")
+driver.find_element(By.NAME, "username").send_keys("Admin")
+driver.find_element(By.NAME, "password").send_keys("admin")
+driver.find_element(By.CLASS_NAME, "oxd-button").click()
+
+act_title = driver.title
+exp_title = "OrangeHRM"
+
+if act_title == exp_title:
+    print("Test case passed")
+else:
+    print("Test case failed")
+
+driver.close()
+
